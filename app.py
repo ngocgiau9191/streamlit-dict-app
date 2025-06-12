@@ -22,7 +22,7 @@ hr {
 # ======= HIỂN THỊ LOGO GIỮA (CỘT 4/7) =======
 col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
 with col4:
-    st.image("9d90cf42-50ce-4f73-9667-f30c0af268a7.png", width=80)
+    st.image("logoVienfinal.png", width=80)
 
 # ======= CHÚ THÍCH TRUNG TÂM, VIỆN =======
 st.markdown("""
