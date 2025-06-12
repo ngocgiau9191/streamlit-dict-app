@@ -69,7 +69,7 @@ st.markdown("<hr>", unsafe_allow_html=True)
 # ======= TIÊU ĐỀ CHÍNH & CHÚ THÍCH =======
 st.markdown(f"""
 <div style='text-align: center; color:{text_color};'>
-    <span style='font-size:36px; font-weight: bold;'>🧑‍🤝‍🧑 CLB Tiếng Anh – TT NCCG TBKT</span><br>
+    <span style='font-size:36px; font-weight: bold;'>🧑‍🤝‍🧑 CÂU LẠC BỘ TIẾNG ANH </span><br>
     <span style='font-size:18px;'>📘 Tra từ điển chuyên ngành cao su Anh – Việt</span>
 </div>
 """, unsafe_allow_html=True)
