@@ -58,8 +58,8 @@ with col4:
 # ======= CHÚ THÍCH DƯỚI LOGO =======
 st.markdown(f"""
 <div style='text-align: center; font-size:13px; color:{text_color}; line-height:1.3;'>
-    Viện Nghiên cứu Cao su Việt Nam<br>
-    Trung tâm Nghiên cứu và Chuyển giao Tiến bộ Kỹ thuật
+    VIỆN NGHIÊN CỨU CAO SU VIỆT NAM<br>
+    TRUNG TÂM NGHIÊN CỨU VÀ CHUYỂN GIAO TIẾN BỘ KỸ THUẬT
 </div>
 """, unsafe_allow_html=True)
 
