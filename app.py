@@ -3,7 +3,7 @@ import pandas as pd
 import difflib
 
 # Hiển thị logo căn giữa (dùng st.image thay vì HTML)
-st.image("195df00a-daa2-4952-aeb7-f6997182010e.png", width=150)  # Đây là file logo bạn vừa tải lên
+st.image("logoVienfinal.png", width=150)  # Đây là file logo bạn vừa tải lên
 
 # Tiêu đề chính + phụ đề (căn giữa)
 st.markdown("""
