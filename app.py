@@ -5,7 +5,7 @@ import difflib
 # Căn giữa logo RRIV và thu nhỏ kích thước
 st.markdown("""
 <div style='text-align: center;'>
-    <img src='logoVienfinal.png' width='100'>
+ st.image('logoVienfinal.png' width='100')
 </div>
 """, unsafe_allow_html=True)
 
