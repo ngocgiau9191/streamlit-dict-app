@@ -5,7 +5,7 @@ import difflib
 # Đọc dữ liệu từ file Excel
 df = pd.read_excel("Data_tudien_Giau.xlsx")
 
-st.title("📘 CLB Tiếng Anh-TT NCCG TBKT Tra từ điển chuyên ngành cao su Anh - Việt")
+st.title("📘 CLB Tiếng Anh - TT NCCG TBKT Tra từ điển chuyên ngành cao su Anh - Việt")
 
 # Ô nhập từ tiếng Anh
 keyword_en = st.text_input("🔍 Nhập từ tiếng Anh:")
