@@ -6,7 +6,7 @@ import difflib
 st.markdown("""
 <style>
 body {
-    background-color: #f8f9fa;
+    background-color: #eef2f3;
 }
 hr {
     border: none;
