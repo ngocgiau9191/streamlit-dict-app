@@ -10,12 +10,14 @@ if theme == "🌿 Sáng":
     background_color = "#e6f4ea"
     text_color = "black"
     hr_color = "#b2d8b2"
+    link_color = "blue"
 else:
     background_color = "#2c2c2c"
     text_color = "white"
     hr_color = "#888888"
+    link_color = "#66ccff"
 
-# ======= CSS: Áp dụng màu nền + chữ + đường phân cách =======
+# ======= CSS TOÀN TRANG =======
 st.markdown(f"""
 <style>
 body {{
@@ -26,8 +28,16 @@ body {{
     background-color: {background_color} !important;
     color: {text_color};
 }}
-label, .stTextInput label {{
+label, .stTextInput label, .stMarkdown p {{
     color: {text_color} !important;
+}}
+div.footer-note {{
+    color: {text_color};
+    font-size: 13px;
+    text-align: center;
+}}
+a {{
+    color: {link_color} !important;
 }}
 hr {{
     border: none;
@@ -40,31 +50,31 @@ hr {{
 </style>
 """, unsafe_allow_html=True)
 
-# ======= HIỂN THỊ LOGO Ở GIỮA (CỘT 4/7) =======
+# ======= LOGO GIỮA (CỘT 4/7) =======
 col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
 with col4:
     st.image("logoVienfinal.png", width=80)
 
-# ======= CHÚ THÍCH LOGO =======
+# ======= CHÚ THÍCH DƯỚI LOGO =======
 st.markdown(f"""
-<div style='text-align: center; font-size:13px; color:gray; line-height:1.3;'>
+<div style='text-align: center; font-size:13px; color:{text_color}; line-height:1.3;'>
     Viện Nghiên cứu Cao su Việt Nam<br>
     Trung tâm Nghiên cứu và Chuyển giao Tiến bộ Kỹ thuật
 </div>
 """, unsafe_allow_html=True)
 
-# ======= GẠCH NGANG TRANG TRÍ =======
+# ======= GẠCH NGANG =======
 st.markdown("<hr>", unsafe_allow_html=True)
 
-# ======= TIÊU ĐỀ CHÍNH =======
+# ======= TIÊU ĐỀ CHÍNH & CHÚ THÍCH =======
 st.markdown(f"""
 <div style='text-align: center; color:{text_color};'>
     <span style='font-size:36px; font-weight: bold;'>🧑‍🤝‍🧑 CLB Tiếng Anh – TT NCCG TBKT</span><br>
-    <span style='font-size:18px; color:gray;'>📘 Tra từ điển chuyên ngành cao su Anh – Việt</span>
+    <span style='font-size:18px;'>📘 Tra từ điển chuyên ngành cao su Anh – Việt</span>
 </div>
 """, unsafe_allow_html=True)
 
-# ======= ĐỌC FILE TỪ ĐIỂN =======
+# ======= ĐỌC FILE EXCEL =======
 df = pd.read_excel("Data_tudien_Giau.xlsx")
 
 # ======= TỪ ĐIỂN ANH – VIỆT =======
@@ -80,12 +90,12 @@ if keyword_en:
     else:
         st.warning("❌ Không tìm thấy từ gần đúng trong từ điển.")
 
-# ======= PHÂN CÁCH =======
+# ======= GẠCH PHÂN CÁCH =======
 st.markdown("---")
 
 # ======= TIÊU ĐỀ PHỤ: VIỆT – ANH =======
 st.markdown(f"""
-<div style='text-align: center; color:gray;'>
+<div style='text-align: center; color:{text_color};'>
     <span style='font-size:18px;'>📗 Tra từ điển chuyên ngành cao su Việt – Anh</span>
 </div>
 """, unsafe_allow_html=True)
@@ -104,9 +114,9 @@ if keyword_vi:
         st.warning("❌ Không tìm thấy từ gần đúng trong từ điển.")
 
 # ======= GHI CHÚ CUỐI TRANG =======
-st.markdown("""
+st.markdown(f"""
 <hr style='margin-top: 40px;'>
-<div style='text-align: center; font-size:13px; color:gray;'>
+<div class='footer-note'>
     Thiết kế bởi <b>Phạm Thị Ngọc Giàu</b><br>
     📧 Email: <a href='mailto:ngocgiau.pham.rriv@gmail.com'>ngocgiau.pham.rriv@gmail.com</a>
 </div>
