@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import difflib
-import os
 
 # ======= GIAO DIỆN: chọn nền sáng hoặc tối =======
 theme = st.radio("🎨 Chọn giao diện:", ["🌿 Sáng", "🌙 Tối"], horizontal=True)
@@ -17,20 +16,6 @@ else:
     text_color = "white"
     hr_color = "#888888"
     link_color = "#66ccff"
-
-# ======= HÀM ĐẾM LƯỢT TRA TỪ =======
-def read_counter():
-    if os.path.exists("counter.txt"):
-        with open("counter.txt", "r") as f:
-            return int(f.read())
-    else:
-        return 0
-
-def update_counter():
-    count = read_counter() + 1
-    with open("counter.txt", "w") as f:
-        f.write(str(count))
-    return count
 
 # ======= CSS TOÀN TRANG =======
 st.markdown(f"""
@@ -85,8 +70,8 @@ st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown(f"""
 <div style='text-align: center; color:{text_color};'>
     <span style='font-size:36px; font-weight: bold;'>🧑‍🤝‍🧑 CÂU LẠC BỘ TIẾNG ANH </span><br>
-    <span style='font-size:18px;'>📘 Tra từ điển chuyên ngành cao su Anh – Việt</span><br>
-    <em style='font-size:14px; color:{text_color};'>Build your English, one word a day!</em>
+    <em style='font-size:14px;'>Build your English, one word a day!</em><br>
+    <span style='font-size:18px;'>📘 Tra từ điển chuyên ngành cao su Anh – Việt</span>
 </div>
 """, unsafe_allow_html=True)
 
@@ -103,7 +88,6 @@ if keyword_en:
         result = df[df['English'].str.lower() == match]
         vietnamese = result.iloc[0]['Vietnamese']
         st.success(f"✅ Bạn có ý muốn tra từ: **{match}**\n\nNghĩa tiếng Việt: **{vietnamese}**")
-        update_counter()
     else:
         st.warning("❌ Không tìm thấy từ gần đúng trong từ điển.")
 
@@ -127,16 +111,11 @@ if keyword_vi:
         result = df[df['Vietnamese'].str.lower() == match]
         english = result.iloc[0]['English']
         st.success(f"✅ Bạn có ý muốn tra từ: **{match}**\n\nNghĩa tiếng Anh: **{english}**")
-        update_counter()
     else:
         st.warning("❌ Không tìm thấy từ gần đúng trong từ điển.")
 
 # ======= GẠCH NGANG =======
 st.markdown("<hr>", unsafe_allow_html=True)
-
-# ======= HIỂN THỊ LƯỢT TRA TỪ =======
-total = read_counter()
-st.markdown(f"<div style='text-align:center; font-size:14px; color:{text_color};'>📊 Tổng số lượt tra từ: <b>{total}</b></div>", unsafe_allow_html=True)
 
 # ======= GHI CHÚ CUỐI TRANG =======
 st.markdown(f"""
