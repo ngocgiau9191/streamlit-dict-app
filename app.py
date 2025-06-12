@@ -19,12 +19,12 @@ hr {
 </style>
 """, unsafe_allow_html=True)
 
-# ======= HIỂN THỊ LOGO Ở GIỮA =======
+# ======= LOGO GIỮA (CỘT 4/7) =======
 col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
 with col4:
     st.image("logoVienfinal.png", width=80)
 
-# ======= CHÚ THÍCH TRUNG TÂM, VIỆN =======
+# ======= CHÚ THÍCH TRUNG TÂM =======
 st.markdown("""
 <div style='text-align: center; font-size:13px; color:gray; line-height:1.3;'>
     Viện Nghiên cứu Cao su Việt Nam<br>
@@ -32,7 +32,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ======= GẠCH NGANG NGĂN CÁCH =======
+# ======= GẠCH NGANG TRANG TRÍ =======
 st.markdown("<hr>", unsafe_allow_html=True)
 
 # ======= TIÊU ĐỀ CHÍNH =======
@@ -73,4 +73,11 @@ st.markdown("""
 keyword_vi = st.text_input("🔍 Nhập từ tiếng Việt:")
 if keyword_vi:
     vietnamese_words = df['Vietnamese'].dropna().str.lower().tolist()
-    close_matches = difflib.get_close_matches(keyword_
+    close_matches = difflib.get_close_matches(keyword_vi.lower(), vietnamese_words, n=1, cutoff=0.6)
+    if close_matches:
+        match = close_matches[0]
+        result = df[df['Vietnamese'].str.lower() == match]
+        english = result.iloc[0]['English']
+        st.success(f"✅ Bạn có ý muốn tra từ: **{match}**\n\nNghĩa tiếng Anh: **{english}**")
+    else:
+        st.warning("❌ Không tìm thấy từ gần đúng trong từ điển.")
