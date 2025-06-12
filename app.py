@@ -2,12 +2,8 @@ import streamlit as st
 import pandas as pd
 import difflib
 
-# Hiển thị logo RRIV căn giữa
-st.markdown("""
-<div style='text-align: center;'>
-    <img src='logoVienfinal.png' width='150'>
-</div>
-""", unsafe_allow_html=True)
+# Hiển thị logo căn giữa (dùng st.image thay vì HTML)
+st.image("195df00a-daa2-4952-aeb7-f6997182010e.png", width=150)  # Đây là file logo bạn vừa tải lên
 
 # Tiêu đề chính + phụ đề (căn giữa)
 st.markdown("""
