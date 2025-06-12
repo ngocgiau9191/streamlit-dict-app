@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import difflib
 
-# ========== CHỌN GIAO DIỆN: SÁNG / TỐI ==========
+# ======= GIAO DIỆN: chọn nền sáng hoặc tối =======
 theme = st.radio("🎨 Chọn giao diện:", ["🌿 Sáng", "🌙 Tối"], horizontal=True)
 
-# ========== CẤU HÌNH MÀU SẮC ==========
+# ======= MÀU NỀN VÀ CHỮ THEO CHẾ ĐỘ =======
 if theme == "🌿 Sáng":
     background_color = "#e6f4ea"
     text_color = "black"
@@ -17,57 +17,28 @@ else:
     hr_color = "#888888"
     link_color = "#66ccff"
 
-# ========== CSS TỔNG HỢP: GỌN, ĐẸP, PHẢN HỒI TỐT ==========
+# ======= CSS TOÀN TRANG =======
 st.markdown(f"""
 <style>
-/* Khung chính căn giữa và thu gọn */
-[data-testid="stAppViewContainer"] > .main {{
-    max-width: 960px;
-    margin: auto;
-    background-color: {background_color};
-    color: {text_color};
-}}
-
-/* Toàn trang */
 body {{
-    background-color: {background_color};
+    background-color: {background_color} !important;
     color: {text_color};
 }}
-
-/* Màu chữ label và markdown */
+[data-testid="stAppViewContainer"] {{
+    background-color: {background_color} !important;
+    color: {text_color};
+}}
 label, .stTextInput label, .stMarkdown p {{
     color: {text_color} !important;
 }}
-
+div.footer-note {{
+    color: {text_color};
+    font-size: 13px;
+    text-align: center;
+}}
 a {{
     color: {link_color} !important;
 }}
-
-/* Tiêu đề lớn */
-.big-title {{
-    font-size: 28px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 4px;
-}}
-
-/* Mô tả nhỏ dưới tiêu đề */
-.small-note {{
-    font-size: 15px;
-    color: {text_color};
-    text-align: center;
-    margin-bottom: 10px;
-}}
-
-/* Ghi chú chân trang */
-div.footer-note {{
-    color: {text_color};
-    font-size: 12px;
-    text-align: center;
-    margin-top: 40px;
-}}
-
-/* Gạch ngang trang trí */
 hr {{
     border: none;
     border-top: 1px solid {hr_color};
@@ -79,32 +50,34 @@ hr {{
 </style>
 """, unsafe_allow_html=True)
 
-# ========== LOGO GIỮA ==========
+# ======= LOGO GIỮA (CỘT 4/7) =======
 col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
 with col4:
     st.image("logoVienfinal.png", width=80)
 
-# ========== CHÚ THÍCH DƯỚI LOGO ==========
+# ======= CHÚ THÍCH DƯỚI LOGO =======
 st.markdown(f"""
-<div class='small-note'>
+<div style='text-align: center; font-size:13px; color:{text_color}; line-height:1.3;'>
     Viện Nghiên cứu Cao su Việt Nam<br>
     Trung tâm Nghiên cứu và Chuyển giao Tiến bộ Kỹ thuật
 </div>
 """, unsafe_allow_html=True)
 
-# ========== GẠCH NGANG ==========
+# ======= GẠCH NGANG =======
 st.markdown("<hr>", unsafe_allow_html=True)
 
-# ========== TIÊU ĐỀ CHÍNH ==========
+# ======= TIÊU ĐỀ CHÍNH & CHÚ THÍCH =======
 st.markdown(f"""
-<div class='big-title'>🧑‍🤝‍🧑 CLB Tiếng Anh – TT NCCG TBKT</div>
-<div class='small-note'>📘 Tra từ điển chuyên ngành cao su Anh – Việt</div>
+<div style='text-align: center; color:{text_color};'>
+    <span style='font-size:36px; font-weight: bold;'>🧑‍🤝‍🧑 CLB Tiếng Anh – TT NCCG TBKT</span><br>
+    <span style='font-size:18px;'>📘 Tra từ điển chuyên ngành cao su Anh – Việt</span>
+</div>
 """, unsafe_allow_html=True)
 
-# ========== ĐỌC FILE TỪ ĐIỂN ==========
+# ======= ĐỌC FILE EXCEL =======
 df = pd.read_excel("Data_tudien_Giau.xlsx")
 
-# ========== TỪ ĐIỂN ANH – VIỆT ==========
+# ======= TỪ ĐIỂN ANH – VIỆT =======
 keyword_en = st.text_input("🔍 Nhập từ tiếng Anh:")
 if keyword_en:
     english_words = df['English'].dropna().str.lower().tolist()
@@ -117,13 +90,17 @@ if keyword_en:
     else:
         st.warning("❌ Không tìm thấy từ gần đúng trong từ điển.")
 
-# ========== GẠCH NGANG ==========
-st.markdown("<hr>", unsafe_allow_html=True)
+# ======= GẠCH PHÂN CÁCH =======
+st.markdown("---")
 
-# ========== TIÊU ĐỀ PHỤ ==========
-st.markdown(f"<div class='small-note'>📗 Tra từ điển chuyên ngành cao su Việt – Anh</div>", unsafe_allow_html=True)
+# ======= TIÊU ĐỀ PHỤ: VIỆT – ANH =======
+st.markdown(f"""
+<div style='text-align: center; color:{text_color};'>
+    <span style='font-size:18px;'>📗 Tra từ điển chuyên ngành cao su Việt – Anh</span>
+</div>
+""", unsafe_allow_html=True)
 
-# ========== TỪ ĐIỂN VIỆT – ANH ==========
+# ======= TỪ ĐIỂN VIỆT – ANH =======
 keyword_vi = st.text_input("🔍 Nhập từ tiếng Việt:")
 if keyword_vi:
     vietnamese_words = df['Vietnamese'].dropna().str.lower().tolist()
@@ -136,7 +113,7 @@ if keyword_vi:
     else:
         st.warning("❌ Không tìm thấy từ gần đúng trong từ điển.")
 
-# ========== GHI CHÚ CUỐI TRANG ==========
+# ======= GHI CHÚ CUỐI TRANG =======
 st.markdown(f"""
 <hr style='margin-top: 40px;'>
 <div class='footer-note'>
