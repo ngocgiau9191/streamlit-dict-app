@@ -2,9 +2,17 @@ import streamlit as st
 import pandas as pd
 import difflib
 
-# ========== GIAO DIỆN SÁNG/TỐI ==========
-theme = st.radio("🎨 Chọn giao diện:", ["🌿 Sáng", "🌙 Tối"], horizontal=True)
+# ========== ĐỌC FILE ==========
+df = pd.read_excel("Data_tudien_Giau.xlsx")
 
+# ========== BỐ CỤC ĐẦU TRANG: LOGO + GIAO DIỆN ==========
+col1, col2, col3, col4, col5, col6, col7 = st.columns([1,1,1,2,1,1,1])
+with col4:
+    st.image("logoVienfinal.png", width=80)
+with col7:
+    theme = st.radio("Chọn giao diện", ["🌿 Sáng", "🌙 Tối"], horizontal=False, label_visibility="collapsed")
+
+# ========== CẤU HÌNH MÀU SẮC ==========
 if theme == "🌿 Sáng":
     background_color = "#e6f4ea"
     text_color = "black"
@@ -13,10 +21,10 @@ if theme == "🌿 Sáng":
 else:
     background_color = "#2c2c2c"
     text_color = "white"
-    hr_color = "#888"
+    hr_color = "#888888"
     link_color = "#66ccff"
 
-# ========== CSS TOÀN TRANG ==========
+# ========== CSS ==========
 st.markdown(f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
@@ -60,7 +68,7 @@ hr {{
     color: {text_color};
 }}
 
-div.footer-note {{
+.footer-note {{
     font-size: 12px;
     text-align: center;
     color: {text_color};
@@ -69,11 +77,7 @@ div.footer-note {{
 </style>
 """, unsafe_allow_html=True)
 
-# ========== LOGO ==========
-col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
-with col4:
-    st.image("logoVienfinal.png", width=80)
-
+# ========== CHÚ THÍCH DƯỚI LOGO ==========
 st.markdown(f"""
 <div class='small-note'>
     Viện Nghiên cứu Cao su Việt Nam<br>
@@ -88,9 +92,6 @@ st.markdown(f"""
 <div class='big-title'>🧑‍🤝‍🧑 CLB Tiếng Anh – TT NCCG TBKT</div>
 <div class='small-note'>📘📗 Tra từ điển chuyên ngành cao su Anh – Việt & Việt – Anh</div>
 """, unsafe_allow_html=True)
-
-# ========== ĐỌC FILE ==========
-df = pd.read_excel("Data_tudien_Giau.xlsx")
 
 # ========== HIỂN THỊ 2 Ô TRA SONG SONG ==========
 col_en, col_vi = st.columns(2)
