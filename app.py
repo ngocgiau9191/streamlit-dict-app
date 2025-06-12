@@ -6,7 +6,7 @@ import difflib
 df = pd.read_excel("Data_tudien_Giau.xlsx")
 
 st.title("📘 Câu lạc bộ tiếng anh Trung tâm NC và CG TBKT RRIV 
-              Tra từ điển chuyên ngành cao su Anh - Việt")
+Tra từ điển chuyên ngành cao su Anh - Việt")
 
 # Ô nhập từ tiếng Anh
 keyword_en = st.text_input("🔍 Nhập từ tiếng Anh:")
