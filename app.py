@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import difflib
 
-# ========== NÚT CHUYỂN CHẾ ĐỘ GIAO DIỆN ==========
+# ======= GIAO DIỆN: chọn nền sáng hoặc tối =======
 theme = st.radio("🎨 Chọn giao diện:", ["🌿 Sáng", "🌙 Tối"], horizontal=True)
 
-# ========== ÁP DỤNG NỀN THEO CHẾ ĐỘ ==========
+# ======= MÀU NỀN VÀ CHỮ THEO CHẾ ĐỘ =======
 if theme == "🌿 Sáng":
     background_color = "#e6f4ea"
     text_color = "black"
@@ -15,7 +15,7 @@ else:
     text_color = "white"
     hr_color = "#888888"
 
-# CSS tùy chỉnh giao diện
+# ======= CSS: Áp dụng màu nền + chữ + đường phân cách =======
 st.markdown(f"""
 <style>
 body {{
@@ -25,6 +25,9 @@ body {{
 [data-testid="stAppViewContainer"] {{
     background-color: {background_color} !important;
     color: {text_color};
+}}
+label, .stTextInput label {{
+    color: {text_color} !important;
 }}
 hr {{
     border: none;
@@ -37,12 +40,12 @@ hr {{
 </style>
 """, unsafe_allow_html=True)
 
-# ========== HIỂN THỊ LOGO TRUNG TÂM ==========
+# ======= HIỂN THỊ LOGO Ở GIỮA (CỘT 4/7) =======
 col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
 with col4:
     st.image("logoVienfinal.png", width=80)
 
-# ========== CHÚ THÍCH LOGO ==========
+# ======= CHÚ THÍCH LOGO =======
 st.markdown(f"""
 <div style='text-align: center; font-size:13px; color:gray; line-height:1.3;'>
     Viện Nghiên cứu Cao su Việt Nam<br>
@@ -50,10 +53,10 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# ========== GẠCH NGANG TRANG TRÍ ==========
+# ======= GẠCH NGANG TRANG TRÍ =======
 st.markdown("<hr>", unsafe_allow_html=True)
 
-# ========== TIÊU ĐỀ CHÍNH ==========
+# ======= TIÊU ĐỀ CHÍNH =======
 st.markdown(f"""
 <div style='text-align: center; color:{text_color};'>
     <span style='font-size:36px; font-weight: bold;'>🧑‍🤝‍🧑 CLB Tiếng Anh – TT NCCG TBKT</span><br>
@@ -61,10 +64,10 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# ========== ĐỌC FILE EXCEL ==========
+# ======= ĐỌC FILE TỪ ĐIỂN =======
 df = pd.read_excel("Data_tudien_Giau.xlsx")
 
-# ========== TỪ ĐIỂN ANH – VIỆT ==========
+# ======= TỪ ĐIỂN ANH – VIỆT =======
 keyword_en = st.text_input("🔍 Nhập từ tiếng Anh:")
 if keyword_en:
     english_words = df['English'].dropna().str.lower().tolist()
@@ -77,17 +80,17 @@ if keyword_en:
     else:
         st.warning("❌ Không tìm thấy từ gần đúng trong từ điển.")
 
-# ========== GẠCH PHÂN CÁCH ==========
+# ======= PHÂN CÁCH =======
 st.markdown("---")
 
-# ========== TIÊU ĐỀ PHỤ ==========
+# ======= TIÊU ĐỀ PHỤ: VIỆT – ANH =======
 st.markdown(f"""
 <div style='text-align: center; color:gray;'>
     <span style='font-size:18px;'>📗 Tra từ điển chuyên ngành cao su Việt – Anh</span>
 </div>
 """, unsafe_allow_html=True)
 
-# ========== TỪ ĐIỂN VIỆT – ANH ==========
+# ======= TỪ ĐIỂN VIỆT – ANH =======
 keyword_vi = st.text_input("🔍 Nhập từ tiếng Việt:")
 if keyword_vi:
     vietnamese_words = df['Vietnamese'].dropna().str.lower().tolist()
@@ -99,3 +102,12 @@ if keyword_vi:
         st.success(f"✅ Bạn có ý muốn tra từ: **{match}**\n\nNghĩa tiếng Anh: **{english}**")
     else:
         st.warning("❌ Không tìm thấy từ gần đúng trong từ điển.")
+
+# ======= GHI CHÚ CUỐI TRANG =======
+st.markdown("""
+<hr style='margin-top: 40px;'>
+<div style='text-align: center; font-size:13px; color:gray;'>
+    Thiết kế bởi <b>Phạm Thị Ngọc Giàu</b><br>
+    📧 Email: <a href='mailto:ngocgiau.pham.rriv@gmail.com'>ngocgiau.pham.rriv@gmail.com</a>
+</div>
+""", unsafe_allow_html=True)
