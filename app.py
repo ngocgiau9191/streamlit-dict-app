@@ -5,7 +5,7 @@ import difflib
 # Đọc dữ liệu từ file Excel
 df = pd.read_excel("Data_tudien_Giau.xlsx")
 
-st.title("📘 Tra từ điển Anh - Việt")
+st.title("📘 Tra từ điển chuyên ngành cao su Anh - Việt")
 
 # Ô nhập từ tiếng Anh
 keyword_en = st.text_input("🔍 Nhập từ tiếng Anh:")
@@ -25,7 +25,7 @@ if keyword_en:
 
 # Phân cách
 st.markdown("---")
-st.title("📗 Tra từ điển Việt - Anh")
+st.title("📗 Tra từ điển chuyên ngành cao su Việt - Anh")
 
 # Ô nhập từ tiếng Việt
 keyword_vi = st.text_input("🔍 Nhập từ tiếng Việt:")
