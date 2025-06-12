@@ -2,16 +2,28 @@ import streamlit as st
 import pandas as pd
 import difflib
 
+# Hiển thị logo RRIV căn giữa
+st.markdown("""
+<div style='text-align: center;'>
+    <img src='logoVienfinal.png' width='150'>
+</div>
+""", unsafe_allow_html=True)
+
+# Tiêu đề chính + phụ đề (căn giữa)
+st.markdown("""
+<div style='text-align: center;'>
+    <span style='font-size:36px; font-weight: bold;'>🧑‍🤝‍🧑 CLB Tiếng Anh – TT NCCG TBKT</span><br>
+    <span style='font-size:18px; color:gray;'>📘 Tra từ điển chuyên ngành cao su Anh – Việt</span>
+</div>
+""", unsafe_allow_html=True)
+
 # Đọc dữ liệu từ file Excel
 df = pd.read_excel("Data_tudien_Giau.xlsx")
-
-st.title("🧑‍🤝‍🧑CLB Tiếng Anh-📘TT NCCG TBKT Tra từ điển chuyên ngành cao su Anh - Việt")
 
 # Ô nhập từ tiếng Anh
 keyword_en = st.text_input("🔍 Nhập từ tiếng Anh:")
 
 if keyword_en:
-    # Tìm từ gần giống nhất
     english_words = df['English'].dropna().str.lower().tolist()
     close_matches = difflib.get_close_matches(keyword_en.lower(), english_words, n=1, cutoff=0.6)
 
@@ -25,7 +37,13 @@ if keyword_en:
 
 # Phân cách
 st.markdown("---")
-st.title("📗 Tra từ điển chuyên ngành cao su Việt - Anh")
+
+# Tiêu đề phụ: từ điển Việt - Anh (căn giữa)
+st.markdown("""
+<div style='text-align: center;'>
+    <span style='font-size:18px; color:gray;'>📗 Tra từ điển chuyên ngành cao su Việt – Anh</span>
+</div>
+""", unsafe_allow_html=True)
 
 # Ô nhập từ tiếng Việt
 keyword_vi = st.text_input("🔍 Nhập từ tiếng Việt:")
