@@ -57,7 +57,7 @@ with col4:
 
 # ======= CHÚ THÍCH DƯỚI LOGO =======
 st.markdown(f"""
-<div style='text-align: center; font-size:13px; color:{text_color}; line-height:1.3;'>
+<div style='text-align: center; font-size:18px; color:{text_color}; line-height:1.3;'>
     VIỆN NGHIÊN CỨU CAO SU VIỆT NAM<br>
     TRUNG TÂM NGHIÊN CỨU VÀ CHUYỂN GIAO TIẾN BỘ KỸ THUẬT
 </div>
