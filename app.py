@@ -2,13 +2,20 @@ import streamlit as st
 import pandas as pd
 import difflib
 
-# Chia bố cục 7 cột, logo ở giữa (cột 4)
+# 🖼️ Hiển thị logo ở giữa bằng cách chia 7 cột
 col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
 with col4:
     st.image("logoVienfinal.png", width=80)
-    st.markdown("<div style='text-align: center; font-size:13px; color:gray;'>Trung tâm Nghiên cứu và Chuyển giao Tiến bộ kỹ thuật</div>", unsafe_allow_html=True)
 
-# Tiêu đề chính + phụ đề (căn giữa)
+# 📝 Dòng mô tả không chia cột, canh giữa toàn trang
+st.markdown("""
+<div style='text-align: center; font-size:13px; color:gray; line-height:1.3;'>
+    Viện Nghiên cứu Cao su Việt Nam<br>
+    Trung tâm Nghiên cứu và Chuyển giao Tiến bộ Kỹ thuật
+</div>
+""", unsafe_allow_html=True)
+
+# 🎯 Tiêu đề chính
 st.markdown("""
 <div style='text-align: center;'>
     <span style='font-size:36px; font-weight: bold;'>🧑‍🤝‍🧑 CLB Tiếng Anh – TT NCCG TBKT</span><br>
@@ -16,10 +23,10 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Đọc dữ liệu từ file Excel
+# 📂 Đọc dữ liệu từ file Excel
 df = pd.read_excel("Data_tudien_Giau.xlsx")
 
-# Ô nhập từ tiếng Anh
+# 🔍 Ô nhập từ tiếng Anh
 keyword_en = st.text_input("🔍 Nhập từ tiếng Anh:")
 
 if keyword_en:
@@ -34,17 +41,17 @@ if keyword_en:
     else:
         st.warning("❌ Không tìm thấy từ gần đúng trong từ điển.")
 
-# Phân cách
+# Đường phân cách
 st.markdown("---")
 
-# Tiêu đề phụ phần Việt – Anh
+# 🎯 Tiêu đề phụ phần Việt – Anh
 st.markdown("""
 <div style='text-align: center;'>
     <span style='font-size:18px; color:gray;'>📗 Tra từ điển chuyên ngành cao su Việt – Anh</span>
 </div>
 """, unsafe_allow_html=True)
 
-# Ô nhập từ tiếng Việt
+# 🔍 Ô nhập từ tiếng Việt
 keyword_vi = st.text_input("🔍 Nhập từ tiếng Việt:")
 
 if keyword_vi:
