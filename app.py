@@ -81,11 +81,12 @@ st.markdown(f"""
 # ======= GẠCH NGANG =======
 st.markdown("<hr>", unsafe_allow_html=True)
 
-# ======= TIÊU ĐỀ CHÍNH & CHÚ THÍCH =======
+# ======= TIÊU ĐỀ CHÍNH + SLOGAN =======
 st.markdown(f"""
 <div style='text-align: center; color:{text_color};'>
     <span style='font-size:36px; font-weight: bold;'>🧑‍🤝‍🧑 CÂU LẠC BỘ TIẾNG ANH </span><br>
-    <span style='font-size:18px;'>📘 Tra từ điển chuyên ngành cao su Anh – Việt</span>
+    <span style='font-size:18px;'>📘 Tra từ điển chuyên ngành cao su Anh – Việt</span><br>
+    <em style='font-size:14px; color:{text_color};'>Build your English, one word a day!</em>
 </div>
 """, unsafe_allow_html=True)
 
