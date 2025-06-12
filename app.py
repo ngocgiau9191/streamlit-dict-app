@@ -2,12 +2,10 @@ import streamlit as st
 import pandas as pd
 import difflib
 
-# Căn giữa logo RRIV và thu nhỏ kích thước
-st.markdown("""
-<div style='text-align: center;'>
- st.image('logoVienfinal.png' width='100')
-</div>
-""", unsafe_allow_html=True)
+# Hiển thị logo bằng st.image() – đúng cách
+st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+st.image("511d4d17-3a6a-48d4-b90a-c09188ff0a20.png", width=100)
+st.markdown("</div>", unsafe_allow_html=True)
 
 # Tiêu đề chính + phụ đề (căn giữa)
 st.markdown("""
@@ -38,7 +36,7 @@ if keyword_en:
 # Phân cách
 st.markdown("---")
 
-# Tiêu đề phụ: từ điển Việt - Anh (căn giữa, cùng style)
+# Tiêu đề phụ phần Việt – Anh (căn giữa)
 st.markdown("""
 <div style='text-align: center;'>
     <span style='font-size:18px; color:gray;'>📗 Tra từ điển chuyên ngành cao su Việt – Anh</span>
