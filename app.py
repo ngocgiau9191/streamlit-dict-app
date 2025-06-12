@@ -4,7 +4,7 @@ import difflib
 
 # Hiển thị logo bằng st.image() – đúng cách
 st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-st.image("511d4d17-3a6a-48d4-b90a-c09188ff0a20.png", width=100)
+st.image("logoVienfinal.png", width=100)
 st.markdown("</div>", unsafe_allow_html=True)
 
 # Tiêu đề chính + phụ đề (căn giữa)
